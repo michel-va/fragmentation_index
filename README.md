@@ -10,6 +10,9 @@ starting from the input file, you'll need to:
   + run in parrallel the tiles_processing.R script on all of your tiles to save the output into the tiles_fragmentation folder 
   + run the merging.R script to merge all of your raster into a final output 
 
+![Rplot](https://user-images.githubusercontent.com/84012797/153675769-f415698c-b43c-44af-b31f-b944ecaf045e.png)
+*final output*
+
 ## Caution 
 There is a couple of point than can prove tricky when calculating these index: 
  + be carefull about the projection system, it need to have meters as units and to be a projected coordinate system 
