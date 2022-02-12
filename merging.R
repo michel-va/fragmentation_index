@@ -4,6 +4,7 @@ library(raster)
 library(SpaDES)
 library(stringr)
 library(sf)
+library(tmap)
 library(meteo)
 
 ### Create a list of raster 
@@ -14,8 +15,8 @@ current.list <- list.files(path="output",
 
 
 current.list<-paste('output',current.list,sep="/")
+current.list<-str_subset(current.list,pattern = 'tif.aux.xml',negate=TRUE)
 current.list<-str_sort(current.list, numeric = TRUE)
-
 
 list_raster<-list()
 
@@ -57,8 +58,13 @@ list_raster$tolerance<-3
 
 m0<-do.call(raster::merge,list_raster)
 
-plot(m0)
 
+tm_shape(m0)+
+  tm_raster(palette="YlOrRd",style="cont")+
+  tm_layout(main.title="Edges density",legend.show = F)
+
+
+m0<-writeRaster(m0,"fragmentation_index.tif")
 
 
 
